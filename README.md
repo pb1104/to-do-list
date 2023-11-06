@@ -1,0 +1,167 @@
+# to-do-list
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <style>
+
+    #checkb {
+  display: grid;
+  position: relative;
+  float: left;
+  top: 19px;
+  gap: 1px;
+
+    }
+#list {
+  display: inline-block;
+}
+#head{
+  font-family: Helvetica;
+  font-size: 70px;
+  font-weight: bold;
+ color: w;
+}
+#wlc{
+  font-family: Garamond;
+  font-size: 25px;
+  color:palevioletred;
+  font-weight: bolder;
+}
+ #day{
+  font-family: garamond;
+  font-size: 40px;
+  font-weight: bold;
+  position: relative;
+  left: 200px;
+  color: palevioletred;
+ }
+ #clk{
+  font-family:'Times New Roman', Times, serif ;
+  font-size: 50px;
+  font-weight: 1000;
+ position: relative;
+ top: 150px;
+ border: 10px rgb(0, 48, 73) double;
+ color: white ;
+ background-color: palevioletred;
+ }
+ #time{
+  font-family: garamond;
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  left:400px;
+  top: 30px;
+  color: palevioletred;
+ }
+ #k1{
+  position: relative;
+ left: 300px;
+ }
+ body{
+  border:5px rgb(0, 48, 73) dotted;
+  background-image: url("C:/Users/KIIT/Pictures/tl1.jpg");
+ }
+ #head1{
+  font-family: Helvetica;
+  font-size: 70px;
+  font-weight: bold;
+ color: palevioletred;
+ position: relative;
+ left: 10px;
+ top: 75px;
+ }
+ #d1{
+  position: relative;
+  left: 800px;
+ }
+ #k1{
+  position: relative;
+  left: 800px;
+ }
+  </style>
+</head>
+<body>
+  <div style="display: grid;grid-row: 4fr 1fr;">
+  <div style="position: fixed;">
+  <div id="head1">TO-DO LIST</div>
+   <div id="head">TO-DO LIST</div>
+  <a id="wlc"> Welcome Back!</a>
+  <br>
+  <a id="time"></a>
+  <a id="day"></a>
+  <br>
+  <a id="clk">
+    <a id="clk"></a>
+  </a>
+  <br>
+</div>
+<div style="position: fixed;top: 100px;">
+<div id="k1">
+  <input type="text" id="i1" placeholder="add task here" style="color: rgb(0, 48, 73);border:3px rgb(0, 48, 73) dotted;">
+  <button id="btn1" onclick="adding()" style="color: white;background-color: palevioletred;font-weight: bolder;border :  5px purple double; ">+</button>
+</div>
+  <div id="d1">
+  <ol id="list" style="font-size:large; color: purple;background-color:lightpink;"></ol>
+  <a id="checkb"></a>
+</div>
+</div>
+</div>
+<div>
+  
+</div>
+  <script>
+    const t = document.querySelector("#time");
+    const d = new Date();
+    const y = d.getFullYear();
+    month = ['JAN','FEB','MARCH','APRIL','MAY','JUNE','JULY','AUG','SEPT','OCT','NOV','DEC'];
+    const m1 = d.getMonth();
+    const m = month[m1];
+    const dt = d.getDate();
+    weekday = ['Sunday','Monday','Thuesday','Wednesday','Thursday','Friday','Saturday']
+    const w1 = d.getDay();
+    const w = weekday[w1];
+    t.textContent = dt + ' ' + m + ', ' + y ;
+    const wd = document.querySelector('#day');
+    wd.textContent = w;
+    const clock = document.querySelector("#clk");
+    const hr = d.getHours() - 12;
+    const min = d.getMinutes();
+    const sec = d.getSeconds();
+    if(min < 10){
+      clock.textContent = hr + '|'+ '0' + min + '|' + sec;
+    }
+    else if(sec < 10){
+      clock.textContent = hr + '|' + min + '|' + '0' + sec;
+    }
+    else if(min < 10 && sec < 10 ){
+    clock.textContent = hr + '|' + '0' +  min + '|'+ '0'  + sec;
+    }
+    else{
+      clock.textContent = hr + '|'+ min + '|' + sec;
+    }
+    const input = document.querySelector("#i1");
+    const element = document.querySelector("#list");
+    const box = document.querySelector("#checkb");
+  
+    function adding() {
+      const newlist = document.createElement("li");
+      newlist.textContent = input.value;
+      const checkb = document.createElement("input");
+      checkb.type = 'checkbox';
+      element.appendChild(newlist);
+      box.appendChild(checkb);
+      
+      checkb.addEventListener('click',()=>{
+     newlist.remove();
+     checkb.remove();
+     alert("well done,keep going");
+      })
+      input.textContent = " ";
+    }
+  </script>
+</body>
+</html>
